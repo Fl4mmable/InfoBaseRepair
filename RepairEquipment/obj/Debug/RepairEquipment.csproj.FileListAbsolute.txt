@@ -1,0 +1,87 @@
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.csproj.AssemblyReference.cache
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\MainWindow.g.cs
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\App.g.cs
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment_Content.g.cs
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment_MarkupCompile.cache
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment_MarkupCompile.lref
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\RepairEquipment.exe.config
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\RepairEquipment.exe
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\RepairEquipment.pdb
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.dll
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.xml
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\MainWindow.baml
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.g.resources
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.Properties.Resources.resources
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.csproj.GenerateResource.cache
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.csproj.CoreCompileInputs.cache
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.csproj.CopyComplete
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.exe
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.pdb
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Director\DirectorMenu.g.cs
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Executor\ExecutorMenu.g.cs
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\MainWindow.g.cs
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Manager\ManagerMenu.g.cs
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\App.g.cs
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment_Content.g.cs
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment_MarkupCompile.cache
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment_MarkupCompile.lref
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.exe
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.pdb
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\RepairEquipment.exe.config
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\RepairEquipment.exe
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\RepairEquipment.pdb
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.dll
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.xml
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Director\DirectorMenu.baml
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Executor\ExecutorMenu.baml
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\MainWindow.baml
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Manager\ManagerMenu.baml
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.g.resources
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.Properties.Resources.resources
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.csproj.GenerateResource.cache
+C:\Users\TEMP\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.csproj.CopyComplete
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Director\DirectorMenu.g.cs
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Executor\ExecutorMenu.g.cs
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Manager\ManagerMenu.g.cs
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Director\DirectorMenu.baml
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Executor\ExecutorMenu.baml
+C:\Users\usersql\Desktop\К демо-экзамену\RepairEquipment\RepairEquipment\obj\Debug\Windows\Manager\ManagerMenu.baml
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\RepairEquipment.exe.config
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\RepairEquipment.exe
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\RepairEquipment.pdb
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.dll
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.xml
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.csproj.AssemblyReference.cache
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.csproj.SuggestedBindingRedirects.cache
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\Windows\Director\DirectorMenu.g.cs
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\Windows\Executor\ExecutorMenu.g.cs
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\Windows\MainWindow.g.cs
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\Windows\Manager\ManagerMenu.g.cs
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\App.g.cs
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment_Content.g.cs
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment_MarkupCompile.cache
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment_MarkupCompile.lref
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\Windows\Director\DirectorMenu.baml
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\Windows\Executor\ExecutorMenu.baml
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\Windows\MainWindow.baml
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\Windows\Manager\ManagerMenu.baml
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.g.resources
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.Properties.Resources.resources
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.csproj.GenerateResource.cache
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.csproj.CoreCompileInputs.cache
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.csproj.CopyComplete
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.exe
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\obj\Debug\RepairEquipment.pdb
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\zxing.dll
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\zxing.presentation.dll
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\zxing.xml
+C:\Users\79194\Desktop\RepairEquipment\RepairEquipment\bin\Debug\zxing.presentation.xml

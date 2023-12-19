@@ -1,0 +1,76 @@
+﻿<Window x:Class="RepairEquipment.Windows.Director.DirectorMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RepairEquipment.Windows.Director"
+        mc:Ignorable="d"
+        Title="DirectorMenu" Height="450" Width="800">
+    <Grid>
+        <TabControl HorizontalAlignment="Center" VerticalAlignment="Center" Height="414" Width="780">
+            <TabItem Header="Сотрудники">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid Name="employeeListDg" HorizontalAlignment="Center" Height="180" Margin="0,52,0,0" VerticalAlignment="Top" Width="694" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="employeeListDg_SelectionChanged" SelectedIndex="0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*" Header="Фамилия" Binding="{Binding surname}" />
+                            <DataGridTextColumn Width="*" Header="Имя" Binding="{Binding name}"/>
+                            <DataGridTextColumn Width="*" Header="Отчество" Binding="{Binding patronymic}"/>
+                            <DataGridTextColumn Width="*" Header="Логин" Binding="{Binding login}"/>
+                            <DataGridTextColumn Width="*" Header="Пароль" Binding="{Binding password}"/>
+                            <DataGridTextColumn Width="*" Header="Должность" Binding="{Binding post.name}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GroupBox Header="Сотрудники" Margin="31,20,31,143"/>
+                    <GroupBox Header="Работа с сотрудниками" HorizontalAlignment="Left" Height="111" Margin="31,250,0,0" VerticalAlignment="Top" Width="712"/>
+                    <ComboBox Name="postsCmb" HorizontalAlignment="Left" Margin="346,330,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Button Name="BackBtn" Click="BackBtn_Click" Content="Назад" HorizontalAlignment="Left" Margin="31,364,0,0" VerticalAlignment="Top" Width="71"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="126,273,0,0" TextWrapping="Wrap" Name="surnameTb" VerticalAlignment="Top" Width="120"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="126,301,0,0" TextWrapping="Wrap" Name="nametb" VerticalAlignment="Top" Width="120"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="126,329,0,0" TextWrapping="Wrap" Name="patronymicTb" VerticalAlignment="Top" Width="120"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="346,273,0,0" TextWrapping="Wrap" Name="loginTb" VerticalAlignment="Top" Width="120"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="346,301,0,0" TextWrapping="Wrap" Name="passwordTb" VerticalAlignment="Top" Width="120"/>
+                    <Button Name="addEmployeeBtn" Click="addEmployeeBtn_Click" Content="Добавить" HorizontalAlignment="Left" Margin="541,321,0,0" VerticalAlignment="Top" Width="130" Height="31"/>
+                    <Button Name="editEmployeeBtn" Click="editEmployeeBtn_Click" Content="Редактировать" HorizontalAlignment="Left" Margin="541,273,0,0" VerticalAlignment="Top" Width="130" Height="30"/>
+                    <Label Content="Фамилия:" HorizontalAlignment="Left" Margin="54,270,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Имя:" HorizontalAlignment="Left" Margin="54,298,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Отчество:" HorizontalAlignment="Left" Margin="54,326,0,0" VerticalAlignment="Top"/>
+
+                    <Label Content="Логин:" HorizontalAlignment="Left" Margin="267,270,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Пароль:" HorizontalAlignment="Left" Margin="267,298,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Должность:" HorizontalAlignment="Left" Margin="267,326,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Отчёт">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid Name="ordersListDg" HorizontalAlignment="Center" Height="307" Margin="41,52,237,0" VerticalAlignment="Top" Width="496" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="employeeListDg_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Оборудование" Binding="{Binding equipment.name}" />
+                            <DataGridTextColumn Header="Исполнитель" Binding="{Binding fullName}"/>
+                            <DataGridTextColumn Header="Тип поломки" Binding="{Binding crash_type.name}"/>
+                            <DataGridTextColumn Header="Описание поломки" Binding="{Binding description_crash}"/>
+                            <DataGridTextColumn Header="Приоритет выполнения" Binding="{Binding priority_order.name}"/>
+                            <DataGridTextColumn Header="Причина поломки" Binding="{Binding crash_reason.name}"/>
+                            <DataGridTextColumn Header="Доп. информация" Binding="{Binding additional_info}"/>
+                            <DataGridTextColumn Header="Срок" Binding="{Binding time_of_completion}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GroupBox Header="Список заявок" Margin="31,20,228,10"/>
+                    <GroupBox Header="Статистика" HorizontalAlignment="Left" Height="356" Margin="564,20,0,0" VerticalAlignment="Top" Width="200"/>
+                    <Button Name="resetBtn" Click="resetBtn_Click" Content="Сброс" HorizontalAlignment="Left" Margin="586,339,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Name="backBtn2" Click="BackBtn_Click" Content="Назад" HorizontalAlignment="Left" Margin="671,339,0,0" VerticalAlignment="Top" Width="75"/>
+
+                    <Label HorizontalAlignment="Left" Margin="578,52,0,0" VerticalAlignment="Top">
+                        <TextBlock Name="orderStatslbl" TextWrapping="Wrap" Width="158" Height="51"></TextBlock>
+                    </Label>
+                    <ComboBox Name="typesCrashCmb" SelectionChanged="typesCrashCmb_SelectionChanged" HorizontalAlignment="Left" Margin="578,158,0,0" VerticalAlignment="Top" Width="168"/>
+                    <Label HorizontalAlignment="Left" Margin="578,113,0,0" VerticalAlignment="Top" Width="168" Height="40">
+                        <TextBlock Text="Статистика по типам несправности:" TextWrapping="Wrap" Width="158"/>
+                    </Label>
+                    <Label HorizontalAlignment="Left" Margin="578,193,0,0" VerticalAlignment="Top">
+                        <TextBlock Name="averageDaylbl" TextWrapping="Wrap" Width="158" Height="51"></TextBlock>
+                    </Label>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

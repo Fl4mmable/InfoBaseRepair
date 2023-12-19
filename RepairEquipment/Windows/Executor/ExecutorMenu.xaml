@@ -1,0 +1,70 @@
+﻿<Window x:Class="RepairEquipment.Windows.Executor.ExecutorMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RepairEquipment.Windows.Executor"
+        mc:Ignorable="d"
+        Title="Ремонт - Меню исполнителя" Height="450" Width="800">
+    <Grid>
+        <TabControl HorizontalAlignment="Center" VerticalAlignment="Center" Height="414" Width="780" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Оформление заявки">
+                <Grid Background="#FFE5E5E5">
+                    <Button Name="Back1Btn" Click="BackBtn_Click" Content="Назад" HorizontalAlignment="Left" Margin="660,336,0,0" VerticalAlignment="Top" Width="76" Height="31"/>
+                    <GroupBox Header="Оформление заявки" Margin="34,14,354,8" RenderTransformOrigin="0.5,0.5"/>
+                    <Label Content="Выбор оборудования:" Margin="42,47,600,314" />
+                    <ComboBox Name="equipmentsCmb" HorizontalAlignment="Left" Margin="174,49,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Выбор поломки:" Margin="42,82,600,278" />
+                    <ComboBox Name="crashesCmb" HorizontalAlignment="Left" Margin="174,84,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Выбор клиента:" Margin="42,115,600,245" />
+                    <ComboBox Name="clientsCmb"  HorizontalAlignment="Left" Margin="174,117,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Описание поломки:" Margin="42,170,600,190" />
+                    <TextBox Name="descriptionCrashTb" HorizontalAlignment="Left" Margin="174,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="51"/>
+                    <Label Content="Выбор приоритета:" Margin="42,232,600,128" />
+                    <ComboBox Name="prioritesCmb" HorizontalAlignment="Left" Margin="174,234,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Выбор причины:" Margin="42,264,600,98" />
+                    <ComboBox Name="reasonsCmb" HorizontalAlignment="Left" Margin="174,266,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Доп. информация:" Margin="42,294,600,68" />
+                    <TextBox Name="additionalTb" HorizontalAlignment="Left" Margin="174,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="44"/>
+                    <Button Name="applicationBtn" Click="applicationBtn_Click" Content="Оформить" HorizontalAlignment="Left" Margin="320,336,0,0" VerticalAlignment="Top" Height="31" Width="74"/>
+                    <GroupBox Header="Добавление клиента*" Margin="472,14,38,122"/>
+                    <Label Content="Фамилия:" Margin="491,70,211,290" />
+                    <TextBox Name="surnameTb" HorizontalAlignment="Left" Margin="579,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
+                    <Label Content="Имя:" Margin="491,110,211,250" />
+                    <TextBox Name="nameTb" HorizontalAlignment="Left" Margin="579,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
+                    <Label Content="Отчество:" Margin="491,147,211,213" />
+                    <TextBox Name="patronymicTb" HorizontalAlignment="Left" Margin="579,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
+                    <Label Content="Моб. телефон:" Margin="491,184,190,176" />
+                    <TextBox Name="phoneTb" HorizontalAlignment="Left" Margin="579,184,0,176" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="26"/>
+                    <Button Name="addClientBtn" Click="addClientBtn_Click" Content="Добавить клиента" HorizontalAlignment="Left" Margin="579,226,0,0" VerticalAlignment="Top" Height="26" Width="120"/>
+                    <Label Content="Выбор исполнителя:" Margin="42,143,609,218" />
+                    <ComboBox x:Name="employeeCmb" HorizontalAlignment="Left" Margin="174,147,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Срок ремонта(в днях):" Margin="42,345,600,17" />
+                    <TextBox Name="timeTb" HorizontalAlignment="Left" Margin="174,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="24"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Ремонт техники">
+                <Grid Background="#FFE5E5E5">
+                    <Button Name="Back2Btn" Click="BackBtn_Click" Content="Назад" HorizontalAlignment="Left" Margin="29,315,0,0" VerticalAlignment="Top" Width="76" Height="25"/>
+                    <DataGrid Name="orderListDg" HorizontalAlignment="Left" Height="180" Margin="29,66,0,0" VerticalAlignment="Top" Width="719" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Оборудование" Binding="{Binding equipment.name}" />
+                            <DataGridTextColumn Header="Тип поломки" Binding="{Binding crash_type.name}"/>
+                            <DataGridTextColumn Header="Описание поломки" Binding="{Binding description_crash}"/>
+                            <DataGridTextColumn Header="Приоритет выполнения" Binding="{Binding priority_order.name}"/>
+                            <DataGridTextColumn Header="Причина поломки" Binding="{Binding crash_reason.name}"/>
+                            <DataGridTextColumn Header="Доп. информация" Binding="{Binding additional_info}"/>
+                            <DataGridTextColumn Header="Срок" Binding="{Binding time_of_completion}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Name="repairBtn" Click="repairBtn_Click" Content="Отремонтировано" HorizontalAlignment="Left" Margin="616,285,0,0" VerticalAlignment="Top" Width="132" Height="47"/>
+                    <GroupBox Header="Техника на ремонте" HorizontalAlignment="Left" Height="332" Margin="13,23,0,0" VerticalAlignment="Top" Width="751"/>
+                    <ComboBox Name="materialsCmb" HorizontalAlignment="Left" Margin="29,285,0,0" VerticalAlignment="Top" Width="190"/>
+                    <Label Content="Выбор материала:" HorizontalAlignment="Left" Margin="29,259,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="countTb" HorizontalAlignment="Left" Margin="267,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22"/>
+                    <Label Content="Введите кол-во материалов:" HorizontalAlignment="Left" Margin="267,259,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

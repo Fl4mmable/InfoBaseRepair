@@ -1,0 +1,883 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище repair_equipmentModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="20" />
+          <Property Name="name" Type="nvarchar" MaxLength="15" />
+          <Property Name="patronymic" Type="nvarchar" MaxLength="25" />
+          <Property Name="phone" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="crash_reason">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="crash_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="20" />
+          <Property Name="name" Type="nvarchar" MaxLength="15" />
+          <Property Name="patronymic" Type="nvarchar" MaxLength="25" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="post_id" Type="int" />
+        </EntityType>
+        <EntityType Name="equipment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="equipment_type_id" Type="int" />
+          <Property Name="serial_number" Type="float" />
+          <Property Name="salary" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="description" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="equipment_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="salary" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="material_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="material_id" Type="int" />
+          <Property Name="count" Type="int" />
+          <Property Name="order_id" Type="int" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" />
+          <Property Name="equipment_id" Type="int" />
+          <Property Name="crash_type_id" Type="int" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="employee_id" Type="int" />
+          <Property Name="status_id" Type="int" />
+          <Property Name="description_crash" Type="nvarchar" MaxLength="250" />
+          <Property Name="priority_order_id" Type="int" />
+          <Property Name="crash_reason_id" Type="int" />
+          <Property Name="additional_info" Type="nvarchar" MaxLength="250" />
+          <Property Name="time_of_completion" Type="int" />
+        </EntityType>
+        <EntityType Name="order_material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="material_id" Type="int" />
+          <Property Name="order_id" Type="int" />
+          <Property Name="salary" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="count" Type="int" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="priority_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_employee_post">
+          <End Role="post" Type="Self.post" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="post_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_equipment_equipment_type">
+          <End Role="equipment_type" Type="Self.equipment_type" Multiplicity="0..1" />
+          <End Role="equipment" Type="Self.equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipment_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="equipment">
+              <PropertyRef Name="equipment_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_material_list_material">
+          <End Role="material" Type="Self.material" Multiplicity="0..1" />
+          <End Role="material_list" Type="Self.material_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="material_list">
+              <PropertyRef Name="material_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_material_list_order">
+          <End Role="order" Type="Self.order" Multiplicity="0..1" />
+          <End Role="material_list" Type="Self.material_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="material_list">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_client">
+          <End Role="client" Type="Self.client" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_crash_reason">
+          <End Role="crash_reason" Type="Self.crash_reason" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="crash_reason">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="crash_reason_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_crash_type">
+          <End Role="crash_type" Type="Self.crash_type" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="crash_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="crash_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_employee">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_equipment">
+          <End Role="equipment" Type="Self.equipment" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="equipment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_material_material">
+          <End Role="material" Type="Self.material" Multiplicity="0..1" />
+          <End Role="order_material" Type="Self.order_material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_material">
+              <PropertyRef Name="material_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_material_order">
+          <End Role="order" Type="Self.order" Multiplicity="0..1" />
+          <End Role="order_material" Type="Self.order_material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_material">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_priority_order">
+          <End Role="priority_order" Type="Self.priority_order" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="priority_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="priority_order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище repair_equipmentModelContainer">
+          <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="crash_reason" EntityType="Self.crash_reason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="crash_type" EntityType="Self.crash_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="equipment" EntityType="Self.equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="equipment_type" EntityType="Self.equipment_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="material" EntityType="Self.material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="material_list" EntityType="Self.material_list" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_material" EntityType="Self.order_material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="post" EntityType="Self.post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="priority_order" EntityType="Self.priority_order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_employee_post" Association="Self.FK_employee_post">
+            <End Role="post" EntitySet="post" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_equipment_equipment_type" Association="Self.FK_equipment_equipment_type">
+            <End Role="equipment_type" EntitySet="equipment_type" />
+            <End Role="equipment" EntitySet="equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_material_list_material" Association="Self.FK_material_list_material">
+            <End Role="material" EntitySet="material" />
+            <End Role="material_list" EntitySet="material_list" />
+          </AssociationSet>
+          <AssociationSet Name="FK_material_list_order" Association="Self.FK_material_list_order">
+            <End Role="order" EntitySet="order" />
+            <End Role="material_list" EntitySet="material_list" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_client" Association="Self.FK_order_client">
+            <End Role="client" EntitySet="client" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_crash_reason" Association="Self.FK_order_crash_reason">
+            <End Role="crash_reason" EntitySet="crash_reason" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_crash_type" Association="Self.FK_order_crash_type">
+            <End Role="crash_type" EntitySet="crash_type" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_employee" Association="Self.FK_order_employee">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_equipment" Association="Self.FK_order_equipment">
+            <End Role="equipment" EntitySet="equipment" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_material_material" Association="Self.FK_order_material_material">
+            <End Role="material" EntitySet="material" />
+            <End Role="order_material" EntitySet="order_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_material_order" Association="Self.FK_order_material_order">
+            <End Role="order" EntitySet="order" />
+            <End Role="order_material" EntitySet="order_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_priority_order" Association="Self.FK_order_priority_order">
+            <End Role="priority_order" EntitySet="priority_order" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_status" Association="Self.FK_order_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="repair_equipmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_client" FromRole="client" ToRole="order" />
+        </EntityType>
+        <EntityType Name="crash_reason">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_crash_reason" FromRole="crash_reason" ToRole="order" />
+        </EntityType>
+        <EntityType Name="crash_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_crash_type" FromRole="crash_type" ToRole="order" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="post_id" Type="Int32" />
+          <NavigationProperty Name="post" Relationship="Self.FK_employee_post" FromRole="employee" ToRole="post" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_employee" FromRole="employee" ToRole="order" />
+        </EntityType>
+        <EntityType Name="equipment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="equipment_type_id" Type="Int32" />
+          <Property Name="serial_number" Type="Double" />
+          <Property Name="salary" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="equipment_type" Relationship="Self.FK_equipment_equipment_type" FromRole="equipment" ToRole="equipment_type" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_equipment" FromRole="equipment" ToRole="order" />
+        </EntityType>
+        <EntityType Name="equipment_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="equipment" Relationship="Self.FK_equipment_equipment_type" FromRole="equipment_type" ToRole="equipment" />
+        </EntityType>
+        <EntityType Name="material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="salary" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="material_list" Relationship="Self.FK_material_list_material" FromRole="material" ToRole="material_list" />
+          <NavigationProperty Name="order_material" Relationship="Self.FK_order_material_material" FromRole="material" ToRole="order_material" />
+        </EntityType>
+        <EntityType Name="material_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="material_id" Type="Int32" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="order_id" Type="Int32" />
+          <NavigationProperty Name="material" Relationship="Self.FK_material_list_material" FromRole="material_list" ToRole="material" />
+          <NavigationProperty Name="order" Relationship="Self.FK_material_list_order" FromRole="material_list" ToRole="order" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="equipment_id" Type="Int32" />
+          <Property Name="crash_type_id" Type="Int32" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="employee_id" Type="Int32" />
+          <Property Name="status_id" Type="Int32" />
+          <Property Name="description_crash" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="priority_order_id" Type="Int32" />
+          <Property Name="crash_reason_id" Type="Int32" />
+          <Property Name="additional_info" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="time_of_completion" Type="Int32" />
+          <NavigationProperty Name="client" Relationship="Self.FK_order_client" FromRole="order" ToRole="client" />
+          <NavigationProperty Name="crash_reason" Relationship="Self.FK_order_crash_reason" FromRole="order" ToRole="crash_reason" />
+          <NavigationProperty Name="crash_type" Relationship="Self.FK_order_crash_type" FromRole="order" ToRole="crash_type" />
+          <NavigationProperty Name="employee" Relationship="Self.FK_order_employee" FromRole="order" ToRole="employee" />
+          <NavigationProperty Name="equipment" Relationship="Self.FK_order_equipment" FromRole="order" ToRole="equipment" />
+          <NavigationProperty Name="material_list" Relationship="Self.FK_material_list_order" FromRole="order" ToRole="material_list" />
+          <NavigationProperty Name="order_material" Relationship="Self.FK_order_material_order" FromRole="order" ToRole="order_material" />
+          <NavigationProperty Name="priority_order" Relationship="Self.FK_order_priority_order" FromRole="order" ToRole="priority_order" />
+          <NavigationProperty Name="status" Relationship="Self.FK_order_status" FromRole="order" ToRole="status" />
+        </EntityType>
+        <EntityType Name="order_material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="material_id" Type="Int32" />
+          <Property Name="order_id" Type="Int32" />
+          <Property Name="salary" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="count" Type="Int32" />
+          <NavigationProperty Name="material" Relationship="Self.FK_order_material_material" FromRole="order_material" ToRole="material" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_material_order" FromRole="order_material" ToRole="order" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="employee" Relationship="Self.FK_employee_post" FromRole="post" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="priority_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_priority_order" FromRole="priority_order" ToRole="order" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_status" FromRole="status" ToRole="order" />
+        </EntityType>
+        <Association Name="FK_order_client">
+          <End Role="client" Type="Self.client" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_crash_reason">
+          <End Role="crash_reason" Type="Self.crash_reason" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="crash_reason">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="crash_reason_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_crash_type">
+          <End Role="crash_type" Type="Self.crash_type" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="crash_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="crash_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employee_post">
+          <End Role="post" Type="Self.post" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="post_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_employee">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_equipment_equipment_type">
+          <End Role="equipment_type" Type="Self.equipment_type" Multiplicity="0..1" />
+          <End Role="equipment" Type="Self.equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipment_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="equipment">
+              <PropertyRef Name="equipment_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_equipment">
+          <End Role="equipment" Type="Self.equipment" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="equipment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_material_list_material">
+          <End Role="material" Type="Self.material" Multiplicity="0..1" />
+          <End Role="material_list" Type="Self.material_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="material_list">
+              <PropertyRef Name="material_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_material_material">
+          <End Role="material" Type="Self.material" Multiplicity="0..1" />
+          <End Role="order_material" Type="Self.order_material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_material">
+              <PropertyRef Name="material_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_material_list_order">
+          <End Role="order" Type="Self.order" Multiplicity="0..1" />
+          <End Role="material_list" Type="Self.material_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="material_list">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_material_order">
+          <End Role="order" Type="Self.order" Multiplicity="0..1" />
+          <End Role="order_material" Type="Self.order_material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order_material">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_priority_order">
+          <End Role="priority_order" Type="Self.priority_order" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="priority_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="priority_order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RepairEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="client" EntityType="Self.client" />
+          <EntitySet Name="crash_reason" EntityType="Self.crash_reason" />
+          <EntitySet Name="crash_type" EntityType="Self.crash_type" />
+          <EntitySet Name="employee" EntityType="Self.employee" />
+          <EntitySet Name="equipment" EntityType="Self.equipment" />
+          <EntitySet Name="equipment_type" EntityType="Self.equipment_type" />
+          <EntitySet Name="material" EntityType="Self.material" />
+          <EntitySet Name="material_list" EntityType="Self.material_list" />
+          <EntitySet Name="order" EntityType="Self.order" />
+          <EntitySet Name="order_material" EntityType="Self.order_material" />
+          <EntitySet Name="post" EntityType="Self.post" />
+          <EntitySet Name="priority_order" EntityType="Self.priority_order" />
+          <EntitySet Name="status" EntityType="Self.status" />
+          <AssociationSet Name="FK_order_client" Association="Self.FK_order_client">
+            <End Role="client" EntitySet="client" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_crash_reason" Association="Self.FK_order_crash_reason">
+            <End Role="crash_reason" EntitySet="crash_reason" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_crash_type" Association="Self.FK_order_crash_type">
+            <End Role="crash_type" EntitySet="crash_type" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employee_post" Association="Self.FK_employee_post">
+            <End Role="post" EntitySet="post" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_employee" Association="Self.FK_order_employee">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_equipment_equipment_type" Association="Self.FK_equipment_equipment_type">
+            <End Role="equipment_type" EntitySet="equipment_type" />
+            <End Role="equipment" EntitySet="equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_equipment" Association="Self.FK_order_equipment">
+            <End Role="equipment" EntitySet="equipment" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_material_list_material" Association="Self.FK_material_list_material">
+            <End Role="material" EntitySet="material" />
+            <End Role="material_list" EntitySet="material_list" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_material_material" Association="Self.FK_order_material_material">
+            <End Role="material" EntitySet="material" />
+            <End Role="order_material" EntitySet="order_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_material_list_order" Association="Self.FK_material_list_order">
+            <End Role="order" EntitySet="order" />
+            <End Role="material_list" EntitySet="material_list" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_material_order" Association="Self.FK_order_material_order">
+            <End Role="order" EntitySet="order" />
+            <End Role="order_material" EntitySet="order_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_priority_order" Association="Self.FK_order_priority_order">
+            <End Role="priority_order" EntitySet="priority_order" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_status" Association="Self.FK_order_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище repair_equipmentModelContainer" CdmEntityContainer="RepairEntities">
+          <EntitySetMapping Name="client">
+            <EntityTypeMapping TypeName="repair_equipmentModel.client">
+              <MappingFragment StoreEntitySet="client">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="crash_reason">
+            <EntityTypeMapping TypeName="repair_equipmentModel.crash_reason">
+              <MappingFragment StoreEntitySet="crash_reason">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="crash_type">
+            <EntityTypeMapping TypeName="repair_equipmentModel.crash_type">
+              <MappingFragment StoreEntitySet="crash_type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee">
+            <EntityTypeMapping TypeName="repair_equipmentModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="post_id" ColumnName="post_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="equipment">
+            <EntityTypeMapping TypeName="repair_equipmentModel.equipment">
+              <MappingFragment StoreEntitySet="equipment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="equipment_type_id" ColumnName="equipment_type_id" />
+                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="equipment_type">
+            <EntityTypeMapping TypeName="repair_equipmentModel.equipment_type">
+              <MappingFragment StoreEntitySet="equipment_type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="material">
+            <EntityTypeMapping TypeName="repair_equipmentModel.material">
+              <MappingFragment StoreEntitySet="material">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="material_list">
+            <EntityTypeMapping TypeName="repair_equipmentModel.material_list">
+              <MappingFragment StoreEntitySet="material_list">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="material_id" ColumnName="material_id" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order">
+            <EntityTypeMapping TypeName="repair_equipmentModel.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="equipment_id" ColumnName="equipment_id" />
+                <ScalarProperty Name="crash_type_id" ColumnName="crash_type_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="description_crash" ColumnName="description_crash" />
+                <ScalarProperty Name="priority_order_id" ColumnName="priority_order_id" />
+                <ScalarProperty Name="crash_reason_id" ColumnName="crash_reason_id" />
+                <ScalarProperty Name="additional_info" ColumnName="additional_info" />
+                <ScalarProperty Name="time_of_completion" ColumnName="time_of_completion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_material">
+            <EntityTypeMapping TypeName="repair_equipmentModel.order_material">
+              <MappingFragment StoreEntitySet="order_material">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="material_id" ColumnName="material_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="count" ColumnName="count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="post">
+            <EntityTypeMapping TypeName="repair_equipmentModel.post">
+              <MappingFragment StoreEntitySet="post">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="priority_order">
+            <EntityTypeMapping TypeName="repair_equipmentModel.priority_order">
+              <MappingFragment StoreEntitySet="priority_order">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status">
+            <EntityTypeMapping TypeName="repair_equipmentModel.status">
+              <MappingFragment StoreEntitySet="status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,61 @@
+﻿<Window x:Class="RepairEquipment.Windows.Manager.ManagerMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RepairEquipment.Windows.Manager"
+        mc:Ignorable="d"
+        Title="ManagerMenu" Height="450" Width="800">
+    <Grid>
+        <TabControl HorizontalAlignment="Center" VerticalAlignment="Center" Height="414" Width="780">
+            <TabItem Header="Редактирование заявок">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid Name="orderListDg" HorizontalAlignment="Center" Height="180" Margin="0,52,0,0" VerticalAlignment="Top" Width="694" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="orderListDg_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Оборудование" Binding="{Binding equipment.name}" />
+                            <DataGridTextColumn Header="Исполнитель" Binding="{Binding employee.surname}"/>
+                            <DataGridTextColumn Header="Тип поломки" Binding="{Binding crash_type.name}"/>
+                            <DataGridTextColumn Header="Описание поломки" Binding="{Binding description_crash}"/>
+                            <DataGridTextColumn Header="Приоритет выполнения" Binding="{Binding priority_order.name}"/>
+                            <DataGridTextColumn Header="Причина поломки" Binding="{Binding crash_reason.name}"/>
+                            <DataGridTextColumn Header="Доп. информация" Binding="{Binding additional_info}"/>
+                            <DataGridTextColumn Header="Срок" Binding="{Binding time_of_completion}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GroupBox Header="Список заявок" Margin="31,20,31,123"/>
+                    <GroupBox Header="Редактирование" HorizontalAlignment="Left" Height="108" Margin="31,268,0,0" VerticalAlignment="Top" Width="329">
+
+                    </GroupBox>
+                    <ComboBox Name="statusesCmb" HorizontalAlignment="Left" Margin="218,293,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox Name="employeesCmb" HorizontalAlignment="Left" Margin="218,323,0,0" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="newdate" HorizontalAlignment="Left" Height="20" Margin="218,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.386,-0.275"/>
+
+
+                    <Label Content="Изменение статуса заявки:" HorizontalAlignment="Left" Margin="56,289,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Продление срока:" HorizontalAlignment="Left" Margin="56,350,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Изменение исполнителя:" HorizontalAlignment="Left" Margin="56,319,0,0" VerticalAlignment="Top"/>
+                    <GroupBox Header="Изменение описания оборудования" HorizontalAlignment="Left" Height="91" Margin="409,268,0,0" VerticalAlignment="Top" Width="334"/>
+                    <Button Name="saveAsBtn" Click="saveAsBtn_Click" HorizontalAlignment="Center" Margin="650,293,46,41" VerticalAlignment="Center" Width="78" Height="52">
+                        <TextBlock Text="Сохранить изменения" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Width="68"/>
+                    </Button>
+                    <TextBox Name="newInfoTb" HorizontalAlignment="Left" Height="52" Margin="427,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" RenderTransformOrigin="0.386,-0.275"/>
+                    <Button Name="BackBtn" Click="BackBtn_Click" Content="Назад" HorizontalAlignment="Left" Margin="459,27,0,0" VerticalAlignment="Top" Width="71"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Генерация кода">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="54*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="38*"/>
+                        <ColumnDefinition Width="667*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="codeimage" HorizontalAlignment="Left" Height="277" Margin="228,45,0,0" VerticalAlignment="Top" Width="365" Grid.Column="4"/>
+                    <Button x:Name="codebutton" Content="Сгенерировать код" HorizontalAlignment="Left" Margin="211,346,0,0" VerticalAlignment="Top" Click="codebutton_Click" Grid.Column="4"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
